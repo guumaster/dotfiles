@@ -13,3 +13,6 @@
   added = yellow
   changed = green
   untracked = cyan
+[user]
+	name = guumaster
+	email = gustavoandresmarin@gmail.com
