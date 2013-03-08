@@ -1,3 +1,6 @@
 [submodule "config/dotfiles/vimrc"]
   path = config/dotfiles/vimrc
   url = https://github.com/guumaster/vimrc.git
+[submodule "bash"]
+	path = bash
+	url = https://github.com/guumaster/bash.git
