@@ -16,3 +16,5 @@
 [user]
   name = guumaster
   email = gustavoandresmarin@gmail.com
+[core]
+	excludesfile = /home/guu/.gitignore_global

@@ -1,6 +1,7 @@
 bashrc
 bash_aliases
 gitconfig
+gitignore_global
 vimrc
 vim
 flexget
