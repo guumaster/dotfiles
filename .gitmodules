@@ -1,3 +1,3 @@
 [submodule "config/dotfiles/vimrc"]
-	path = config/dotfiles/vimrc
-	url = https://github.com/guumaster/vimrc.git
+  path = config/dotfiles/vimrc
+  url = https://github.com/guumaster/vimrc.git
