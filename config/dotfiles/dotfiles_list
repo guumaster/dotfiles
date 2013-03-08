@@ -3,6 +3,4 @@ bash_aliases
 gitconfig
 gitignore_global
 inputrc
-vimrc
-vim
 flexget
