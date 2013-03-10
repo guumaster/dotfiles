@@ -17,7 +17,15 @@
   name = guumaster
   email = gustavoandresmarin@gmail.com
 [core]
-	excludesfile = /home/guu/.gitignore_global
+  excludesfile = /home/guu/.gitignore_global
+  editor=vim
 [github]
-	user = guumaster
-    password= !env-git-pass.sh  | tr -d '\n'
+  user = guumaster
+  password= !env-git-pass.sh  | tr -d '\n'
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  up = rebase
+  ci = commit
