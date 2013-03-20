@@ -1,0 +1,6 @@
+{% extends 'PruebasPrimerBundle::base.html.twig' %}
+
+{% block title %} Hola {{ name }} {% endblock %}
+
+{% block body %} Hola {{ name | default('noname') }} {% endblock %}
+
