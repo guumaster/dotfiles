@@ -1,3 +1,7 @@
+guumaster_notes:
+    resource: "@GuumasterNotesBundle/Resources/config/routing.yml"
+    prefix:   /notas
+
 pruebas_primer:
     resource: "@PruebasPrimerBundle/Resources/config/routing.yml"
     prefix:   /pruebas

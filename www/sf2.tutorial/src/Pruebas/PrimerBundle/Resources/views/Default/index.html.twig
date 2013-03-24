@@ -1,6 +1,23 @@
 {% extends 'PruebasPrimerBundle::base.html.twig' %}
 
-{% block title %} Hola {{ name }} {% endblock %}
+{% set salutation='Hola ' ~ name|default('nadie')|title %}
 
-{% block body %} Hola {{ name | default('noname') }} {% endblock %}
+{% block title salutation %}
 
+{% block body %}
+
+    {{ salutation }}
+
+
+{# 
+    {% block test %}
+        {% set fruits = ['apple', 'orange', 'citrus'] %}
+
+        {% for i in 0..10 %}
+            <li>{{ cycle(fruits, i) }}
+        {% endfor %}
+
+    {% endblock test %}
+#}
+
+{% endblock body%}

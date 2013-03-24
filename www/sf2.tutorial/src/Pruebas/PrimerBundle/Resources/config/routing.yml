@@ -1,5 +1,5 @@
 pruebas_nombre:
-    pattern:  /hola/{name}
+    pattern:  /hola/{name}/
     defaults: { _controller: PruebasPrimerBundle:Default:index, name: "default name from routing.yml" }
     requirements:
         _method: GET
@@ -12,13 +12,13 @@ pruebas_home:
         _method: GET
 
 pruebas_about:
-    pattern:  /about
+    pattern:  /about/
     defaults: { _controller: PruebasPrimerBundle:Default:about }
     requirements:
         _method: GET
 
 pruebas_request:
-    pattern:  /request/{optional}
+    pattern:  /request/{optional}/
     defaults: { _controller: PruebasPrimerBundle:Default:request, optional: "" }
 
 pruebas_session:

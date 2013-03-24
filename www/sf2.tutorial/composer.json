@@ -18,7 +18,8 @@
         "sensio/generator-bundle": "2.2.*",
         "jms/security-extra-bundle": "1.4.*",
         "jms/di-extra-bundle": "1.3.*",
-        "zendframework/zendgdata": "2.0.*@dev"
+        "raulfraile/ladybug-bundle": "dev-master",
+        "elao/web-profiler-extra-bundle" : "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

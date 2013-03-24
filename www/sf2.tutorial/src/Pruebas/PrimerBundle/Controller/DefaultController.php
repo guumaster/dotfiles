@@ -13,7 +13,13 @@ class DefaultController extends Controller
         if( empty($name) ) {
             throw $this->createNotFoundException('Falta el nombre');
         }
-        return $this->render('PruebasPrimerBundle:Default:index.html.twig', array('name' => $name));
+        $req = $this->getRequest();
+        // envia el dump al profiler
+        $this->get('ladybug')->log($req);
+
+        $res= $this->render('PruebasPrimerBundle:Default:index.html.twig', array('name' => $name));
+        $this->get('ladybug')->log($res);
+        return $res;
     }
 
     public function aboutAction()
