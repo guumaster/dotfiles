@@ -24,4 +24,3 @@ pruebas_request:
 pruebas_session:
     pattern:  /session
     defaults: { _controller: PruebasPrimerBundle:Default:session }
-
