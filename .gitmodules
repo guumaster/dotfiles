@@ -1,9 +1,11 @@
 [submodule "config/dotfiles/vimrc"]
-  path = config/dotfiles/vimrc
-  url = https://github.com/guumaster/vimrc.git
+    path = config/dotfiles/vimrc
+    url = https://github.com/guumaster/vimrc.git
+    ignore = all
 [submodule "bash"]
-	path = bash
-	url = https://github.com/guumaster/bash.git
+    path = bash
+    url = https://github.com/guumaster/bash.git
+    ignore = untracked
 [submodule "www/guumaster.github.com"]
-	path = www/guumaster.github.com
-	url = https://github.com/guumaster/guumaster.github.com.git
+    path = www/guumaster.github.com
+    url = https://github.com/guumaster/guumaster.github.com.git
