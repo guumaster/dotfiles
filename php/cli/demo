@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+require_once(__DIR__.'/vendor/autoload.php');
+
+use Symfony\Component\Console as Console;
+use Guumaster\Command\HelloWorldCommand;
+use Guumaster\Command\AliaserCommand;
+
+$app = new Console\Application('Demo App', '0.1');
+
+$app->addCommands(array(
+    new HelloWorldCommand('hello-world'),
+    new AliaserCommand('aliaser')
+));
+
+$app->run();

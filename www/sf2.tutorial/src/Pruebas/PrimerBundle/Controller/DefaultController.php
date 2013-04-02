@@ -10,7 +10,7 @@ class DefaultController extends Controller
 
     public function indexAction($name='')
     {
-        if( empty($name) ) {
+        if (empty($name)) {
             throw $this->createNotFoundException('Falta el nombre');
         }
         $req = $this->getRequest();
@@ -18,8 +18,9 @@ class DefaultController extends Controller
         $this->get('ladybug')->log($req);
 
         $res= $this->render('PruebasPrimerBundle:Default:index.html.twig', array('name' => $name));
-        $this->get('ladybug')->log($res);
-        return $res;
+            $this->get('ladybug')->log($res);
+
+            return $res;
     }
 
     public function aboutAction()
@@ -31,9 +32,10 @@ class DefaultController extends Controller
     {
         $request = $this->get('request');
         $res = array();
-        foreach( $request as $name => $obj ) {
+        foreach ($request as $name => $obj) {
             $res[$name] = $obj->all();
         }
+
         return new JsonResponse($res);
     }
 
@@ -42,6 +44,7 @@ class DefaultController extends Controller
         $ses = $this->get('session');
         $bar = $ses->get('bar');
         $ses->set('bar', ++$bar);
+
         return new JsonResponse(array('bar' => $bar ) );
     }
 }
