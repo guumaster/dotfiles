@@ -9,3 +9,6 @@
 [submodule "www/guumaster.github.com"]
     path = www/guumaster.github.com
     url = https://github.com/guumaster/guumaster.github.com.git
+[submodule "php/cli/sh"]
+	path = php/cli/sh
+	url = https://github.com/guumaster/sh.git
