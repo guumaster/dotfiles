@@ -5,7 +5,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Guumaster": "src/"
+            "Guumaster": "src/",
+            "": "src/"
         }
     }
 }
