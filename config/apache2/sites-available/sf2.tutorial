@@ -1,25 +1,41 @@
 <VirtualHost *:80>
-    ServerAdmin webmaster@localhost
-    ServerName sf2.tutorial
+    ServerName      sf2.tutorial
 
-    DocumentRoot /home/workspace/www/sf2.tutorial/web
-    <Directory />
-        Options FollowSymLinks
+    SetEnv SYMFONY__DATABASE__USER     "..."
+    SetEnv SYMFONY__DATABASE__PASSWORD "..."
+
+    DocumentRoot    "/home/workspace/www/sf2.tutorial/web"
+    DirectoryIndex  app.php
+
+    <Directory "/home/workspace/www/sf2.tutorial/web">
         AllowOverride None
+        Allow from All
+
+        <IfModule mod_rewrite.c>
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*)$ app.php [QSA,L]
+        </IfModule>
     </Directory>
-    <Directory /home/workspace/www/sf2.tutorial/web>
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride None
-        Order allow,deny
-        allow from all
-    </Directory>
 
+    CustomLog  /var/log/apache2/sf2.tutorial-access.log combined
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
+    KeepAlive            On
+    MaxKeepAliveRequests 200
+    KeepAliveTimeout     5
 
-    # Possible values include: debug, info, notice, warn, error, crit,
-    # alert, emerg.
-    LogLevel warn
+    AddOutputFilterByType DEFLATE text/css text/plain text/html application/xhtml+xml text/xml application/xml
 
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    <IfModule mod_headers.c>
+        Header append Vary User-Agent env=!dont-vary
+
+        ExpiresActive On
+        ExpiresDefault "modification plus 1 week"
+        ExpiresByType image/x-icon "modification plus 1 month"
+        ExpiresByType image/gif    "modification plus 1 month"
+        ExpiresByType image/png    "modification plus 1 month"
+        ExpiresByType image/jpeg   "modification plus 1 month"
+    </IfModule>
 </VirtualHost>
+

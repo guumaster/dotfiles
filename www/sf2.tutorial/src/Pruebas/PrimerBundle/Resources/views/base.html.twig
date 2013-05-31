@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{# Plantilla base #}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/pruebasprimer/css/test.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block navigation %}
+    <nav>
+         <ul class="navigation">
+             <li><a href="{{ path('pruebas_home')}}">Home</a></li>
+             <li><a href="{{ path('pruebas_about') }}">About</a></li>
+         </ul>
+    </nav>
+{% endblock %}
+
+{% block header %} Pruebas {% endblock %}
+{% block tagline %} Empezando con symfony2 {% endblock %}

@@ -1,0 +1,12 @@
+{
+    "require": {
+        "symfony/console": "2.3.x-dev",
+        "symfony/class-loader": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Guumaster": "src/",
+            "": "src/"
+        }
+    }
+}

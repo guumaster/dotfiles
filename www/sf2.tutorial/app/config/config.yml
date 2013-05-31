@@ -63,3 +63,38 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+
+raul_fraile_ladybug:
+    # indica si por defecto las variables muestran expandidos sus contenidos
+    general:
+        expanded:             false
+    object:
+        # si utilizas objetos complejos, aumenta este número
+        max_nesting_level:    3
+        # utiliza el valor 'false' para ocultar cada parte del objeto
+        show_data:            true
+        show_classinfo:       true
+        show_constants:       true
+        show_methods:         true
+        show_properties:      true
+    # si utilizas colecciones y arrays muy complejos, aumenta este número
+    array:
+        max_nesting_level:    8
+    processor:
+        active:               true
+    bool:
+        html_color:           #008
+        cli_color:            blue
+    float:
+        html_color:           #800
+        cli_color:            red
+    int:
+        html_color:           #800
+        cli_color:            red
+    string:
+        html_color:           #080
+        cli_color:            green
+        show_quotes:          true
+#    css:
+#        path:                 /asset/tree.min.css
