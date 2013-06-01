@@ -19,9 +19,6 @@
 [core]
   excludesfile = /home/guu/.gitignore_global
   editor=vim
-[github]
-  user = guumaster
-  password= !env-git-pass.sh  | tr -d '\n'
 
 [alias]
   st = status
