@@ -27,5 +27,10 @@
     up = rebase
     ci = commit
     unstage = reset HEAD --
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	review = !sh -c 'post-review --guess-summary --guess-description'
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [merge]
     tool = meld
