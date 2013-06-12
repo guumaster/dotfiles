@@ -4,6 +4,7 @@
 [submodule "bash"]
     path = bash
     url = https://github.com/guumaster/bash.git
+    ignore = dirty
 [submodule "www/guumaster.github.com"]
     path = www/guumaster.github.com
     url = https://github.com/guumaster/guumaster.github.com.git
