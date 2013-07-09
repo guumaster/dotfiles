@@ -1,0 +1,11 @@
+{
+  "name": "Configurator",
+  "version": "0.0.1",
+  "description": "Configurator",
+  "main": "index.html",
+  "author": "Guumaster <guuweb@gmail.com>",
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt": "~0.4.1"
+  }
+}

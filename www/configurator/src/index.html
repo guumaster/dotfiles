@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/toggle-switch.css" >
+    <style type="text/css">
+      body {
+        background-color: #41464f;
+        font-family: sans-serif;
+        font-size: 100%;
+        color: #fff;
+      }
+      .example {
+        padding: 3%;
+        margin: 0 -3% 3em -3%;
+        background-color: #32373F;
+        border-radius: 2px;
+      }
+      .toggle.android p, .toggle.candy p {
+        color: #fff !important;
+      }
+
+    </style>
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/jquery.bind-to-storage.js"></script>
+    <script type="text/javascript">
+
+      $(function(){
+        $('.example').bindToStorage();
+
+        function logChange(e, data){
+          // console.groupCollapsed('storage chage '+ data.key);
+          console.group('storage chage '+ data.key);
+          console.log( 'evento: ', data.key );
+          console.log( 'oldVal: ', data.oldVal );
+          console.log( 'newVal: ', data.newVal );
+          console.log( 'storage: ', localStorage.getItem(data.key) );
+          console.groupEnd();
+        }
+
+      $(document).on('VALOR_1.change VALOR_2.change VALOR_3.change', logChange);
+
+      });
+    </script>
+  </head>
+  <body>
+    <div class="example">
+
+        <label class="checkbox toggle android" onclick="">
+          <input type="checkbox" data-storage-key="VALOR_1" data-storage-type="bool">
+          <p>Valor 1
+            <span>On</span>
+            <span>Off</span>
+          </p>
+
+          <a class="slide-button"></a>
+        </label>
+
+        <br>
+
+        <label>Multiple</label>
+        <div class="switch android">
+          <input id="week71" name="view7" type="radio" checked="" data-storage-key="VALOR_2" data-storage-val="2" data-storage-type="number">
+          <label for="week71" onclick="">Week</label>
+
+          <input id="month72" name="view7" type="radio" data-storage-key="VALOR_2" data-storage-val="3" data-storage-type="number" >
+          <label for="month72" onclick="">Month</label>
+
+          <span class="slide-button"></span>
+        </div>
+
+        <br>
+
+        <label>View</label>
+        <div class="switch switch-three android">
+          <input id="week81" name="view8" type="radio" data-storage-key="VALOR_3" data-storage-type="string" data-storage-val="week">
+          <label for="week81" onclick="">Week</label>
+
+          <input id="month82" name="view8" type="radio" data-storage-key="VALOR_3" data-storage-type="string" data-storage-val="month" >
+          <label for="month82" onclick="">Month</label>
+
+          <input id="month83" name="view8" type="radio" data-storage-key="VALOR_3" data-storage-type="string" data-storage-val="year" >
+          <label for="month83" onclick="">Year</label>
+
+          <span class="slide-button"></span>
+        </div>
+
+      </div>
+  </body>
+</html>
