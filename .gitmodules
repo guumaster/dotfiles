@@ -11,3 +11,12 @@
 [submodule "php/cli/sh"]
 	path = php/cli/sh
 	url = https://github.com/guumaster/sh.git
+[submodule "cli/git/git-extras"]
+	path = cli/git/git-extras
+	url = https://github.com/visionmedia/git-extras.git
+[submodule "www/live_php"]
+	path = www/live_php
+	url = http://github.com:guumaster/phpjs-livereload-example.git
+[submodule "www/webapp-amd-grunt"]
+	path = www/webapp-amd-grunt
+	url = https://github.com/guumaster/webapp-amd-grunt-example.git
