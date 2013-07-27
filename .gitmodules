@@ -5,9 +5,6 @@
     path = bash
     url = https://github.com/guumaster/bash.git
     ignore = dirty
-[submodule "www/guumaster.github.com"]
-    path = www/guumaster.github.com
-    url = https://github.com/guumaster/guumaster.github.com.git
 [submodule "php/cli/sh"]
 	path = php/cli/sh
 	url = https://github.com/guumaster/sh.git
@@ -20,3 +17,7 @@
 [submodule "www/webapp-amd-grunt"]
 	path = www/webapp-amd-grunt
 	url = https://github.com/guumaster/webapp-amd-grunt-example.git
+    ignore = dirty
+[submodule "www/guumaster.github.io"]
+	path = www/guumaster.github.io
+	url = git@github.com:guumaster/guumaster.github.io.git
