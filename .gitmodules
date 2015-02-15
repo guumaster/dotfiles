@@ -1,7 +1,0 @@
-[submodule "dotfiles/vimrc"]
-    path = dotfiles/vimrc
-    url = https://github.com/guumaster/vimrc.git
-[submodule "bash"]
-    path = bash
-    url = https://github.com/guumaster/bash.git
-    ignore = dirty
