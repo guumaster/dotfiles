@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOOLS_SRC_PATH=${TOOLS_SRC_PATH:-local}
+TOOLS_SRC_PATH=${TOOLS_SRC_PATH:-github}
 TMP_DIR=/tmp
 SCRIPT_DIR=`dirname $0`
 GITHUB_REPO=${GITHUB_REPO:-https://github.com/guumaster/dotfiles.git}
@@ -16,6 +16,7 @@ NPM_EXEC=`which npm`
 
 if [ $TOOLS_SRC_PATH = "github" ]
 then
+    [ -d $TMP_DIR/tools ] || rm $TMP_DIR/tools -rf
     git clone $GITHUB_REPO $TMP_DIR/tools
 else
     [ -d $TMP_DIR/tools ] || mkdir $TMP_DIR/tools
