@@ -3,7 +3,7 @@
 TOOLS_SRC_PATH=${TOOLS_SRC_PATH:-local}
 TMP_DIR=/tmp
 SCRIPT_DIR=`dirname $0`
-GITHUB_REPO=${GITHUB_REPO:-https://github.com/guumaster/vimrc}
+GITHUB_REPO=${GITHUB_REPO:-https://github.com/guumaster/dotfiles.git}
 
 # check git and node
 hash git 2>/dev/null  || { echo >&2 "You need git to install these tools. Aborting."; exit 1; }
