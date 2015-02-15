@@ -5,6 +5,3 @@
     path = bash
     url = https://github.com/guumaster/bash.git
     ignore = dirty
-[submodule "cli/git/git-extras"]
-	path = cli/git/git-extras
-	url = https://github.com/visionmedia/git-extras.git
