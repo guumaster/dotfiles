@@ -1,0 +1,2 @@
+# vi ft=bash
+[[ -s /usr/local/nvm/nvm.sh ]] && source /usr/local/nvm/nvm.sh # This loads NVM

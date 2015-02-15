@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DATE=`date +%Y%m%d`
+echo "backup..."
+for f in $*; do
+    echo "    $f to $f.$DATE"
+    cp $f $f.$DATE -r;
+done
+echo "done."

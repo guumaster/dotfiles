@@ -13,9 +13,6 @@
     added = yellow
     changed = green
     untracked = cyan
-[user]
-    name = guumaster
-    email = gustavoandresmarin@gmail.com
 [core]
     excludesfile = /home/guu/.gitignore_global
     editor = vim
@@ -32,6 +29,18 @@
 	dump = cat-file -p
 	review = !sh -c 'post-review --guess-summary --guess-description'
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	# Amend the currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
 [merge]
     tool = meld
 [push]

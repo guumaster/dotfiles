@@ -1,35 +1,31 @@
 #!/bin/bash
 
-WORKSPACE_DIR="$HOME/workspace"
-cd $HOME
+TOOLS_SRC_PATH=${TOOLS_SRC_PATH:-local}
+TMP_DIR=/tmp
+SCRIPT_DIR=`dirname $0`
+GITHUB_REPO=${GITHUB_REPO:-https://github.com/guumaster/vimrc}
 
-# Backup any existing files
-DOTFILES_TO_BACKUP="vimrc vim bash_config"
-for dotfile in $DOTFILES_TO_BACKUP 
-do
-    [[ -f .$dotfile && ! -L .$dotfile ]] && mv .$dotfile $dotfile.orig
-done
+# check git and node
+hash git 2>/dev/null  || { echo >&2 "You need git to install these tools. Aborting."; exit 1; }
+hash node 2>/dev/null || { echo >&2 "You need node to install these tools. Aborting."; exit 1; }
 
-ln -s $WORKSPACE_DIR/bash/config $HOME/.bash_config
-ln -s $WORKSPACE_DIR/config/dotfiles/vimrc $HOME/.vim
-ln -s $HOME/.vim/vimrc $HOME/.vimrc
+NODE_EXEC=`which node`
+NPM_EXEC=`which npm`
 
-# Create new tmp and backup dirs for VIM
-[[ ! -d .vim/.backup ]] && mkdir .vim/.backup
-[[ ! -d .vim/.tmp ]] && mkdir .vim/.tmp
+# git clone tools
 
-DOTFILES_DIR=$WORKSPACE_DIR/config/dotfiles
-DOTFILES="bashrc gitconfig gitignore_global inputrc"
+if [ $TOOLS_SRC_PATH = "github" ]
+then
+    git clone $GITHUB_REPO $TMP_DIR/tools
+else
+    [ -d $TMP_DIR/tools ] || mkdir $TMP_DIR/tools
+    cp $SCRIPT_DIR/* $TMP_DIR/tools/ -r
+fi
 
-for file in $DOTFILES
-do
-    if [ -f .$file ]; then
-         if [ -L .$file ]; then
-             rm .$file
-         else
-             mv .$file $file.orig
-         fi
-     fi
-     ln -s $DOTFILES_DIR/$file .$file
-done
+cd $TMP_DIR/tools/
 
+# npm install
+$NPM_EXEC install
+
+# ask paths and vars
+$NODE_EXEC bootstrap/install

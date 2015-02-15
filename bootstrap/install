@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+require('shelljs/global');
+
+var inquirer = require('inquirer');
+var _ = require('lodash');
+
+var questions = require('./lib/install_questions');
+var reporter = require('./lib/reporter');
+var commands = require('./lib/commands');
+
+var home = require('./lib/home');
+
+var options = {
+    USER_HOME: home(),
+    WORKSPACE: home() + '/workspace',
+    GIT_CONFIG_FILE: "dotfiles/gitconfig",
+    INSTALL_DIR: __dirname,
+    TMP_DIR: '/tmp/tools_tmp',
+    DOTFILES: "vimrc vim viminfo bashrc gitconfig gitignore_global inputrc".split(' ')
+};
+
+
+process.on('uncaughtException', function (err) {
+    reporter.error(err, true);
+})
+
+
+inquirer.prompt(questions, function(answers) {
+
+    var answers = _.extend({}, options, answers);
+
+    /** SETUP WORKSPACE **/
+    reporter.msg('initalizing workspace');
+    commands.setup_workspace(answers) ? reporter.status(true) : reporter.status(false);
+
+    /** GIT SETUP **/
+    reporter.msg('initalizing git config');
+    commands.setup_git(answers) ? reporter.status(true) : reporter.status(false);
+
+    /** BACKUP DOTFILES **/
+    if( answers.do_backup) {
+        reporter.msg('backup dotfiles');
+        commands.backup_dotfiles(answers) ? reporter.status(true) : reporter.status(false);
+    }
+
+    /** CLEAN DOTFILES **/
+    reporter.msg('cleaning dotfiles');
+    commands.clean_dotfiles(answers)  ? reporter.status(true) : reporter.status(false);
+
+
+    /*
+
+     # link dotfiles
+
+     # chmod scripts
+     */
+
+
+    process.exit(0);
+
+});
