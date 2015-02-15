@@ -1,7 +1,0 @@
-parameters:
-#    pruebas_primer.example.class: Pruebas\PrimerBundle\Example
-
-services:
-#    pruebas_primer.example:
-#        class: %pruebas_primer.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
