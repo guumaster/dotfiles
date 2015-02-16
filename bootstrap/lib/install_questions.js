@@ -2,9 +2,9 @@ var home = require('./home');
 var questions = [
     {
         type: 'input',
-        name: 'workspace_path',
+        name: 'WORKSPACE',
         message: 'Workspace path:',
-        default: home() + '/workspace'
+        default: '/tmp' + home() + '/workspace'
     },
     {
         type: 'confirm',
@@ -15,9 +15,9 @@ var questions = [
     {
         when: function(answers) { return answers.do_backup; },
         type: 'input',
-        name: 'backup_path',
+        name: 'BACKUP_DIR',
         message: 'Backup path:',
-        default: home() + '/dotfiles_backup'
+        default: '/tmp' + home() + '/dotfiles_backup'
     },
     {
         type: 'input',

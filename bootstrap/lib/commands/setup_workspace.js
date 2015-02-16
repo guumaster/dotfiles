@@ -10,7 +10,7 @@ var template = swig.compileFile(tpl);
 
 module.exports = function setup_workspace(options) {
 
-    fs.writeFileSync( options.INSTALL_DIR + '/../bash/config/path.d/workspace.sh',  template(options) );
+    fs.writeFileSync( options.SRC_DIR + '/bash/config/path.d/workspace.sh',  template(options) );
 
     return true;
 };
