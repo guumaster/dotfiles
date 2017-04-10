@@ -1,3 +1,4 @@
+# vi: ft=sh
 # cd to dirname(file)
  ffcd()
  {
@@ -5,31 +6,6 @@
          cd $(dirname $1)
      fi
  }
-
-# reload source
-reload() {
-    source ~/.bashrc;
-}
-
-setnet() {
-    export NETWORK_INTERFACE="$1"
-}
-
-
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-phpserver() {
-    local port="${1:-4000}"
-    local ip=`iplocal ${2}`
-    echo "Starting server at ${ip}:${port}"
-    #sleep 1 && open "http://${ip}:${port}/" &
-    php -q -S "${ip}:${port}"
-}
-
-iplocal() {
-    local ip=$(ip addr show ${1:-$NETWORK_INTERFACE} | grep -o 'inet [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+' | grep -o [0-9].*)
-    echo $ip
-}
 
 ippublic() {
     curl http://ifconfig.me
@@ -59,15 +35,6 @@ fs() {
     fi
 }
 
-
-# Use Git’s colored diff when available
-hash git &>/dev/null
-if [ $? -eq 0 ]; then
-    function diff() {
-        git diff --no-index --color-words "$@"
-    }
-fi
-
 date() {
   case $1 in
     -R|--rfc-822)
@@ -93,28 +60,42 @@ b() {
     cd $str
 }
 
-# USEFUL ALIAS FOR EXTRACT KNOW ARCHIVES
-extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+# Extract archives - use: extract <file>
+# Based on http://dotfiles.org/~pseup/.bashrc
+function extract() {
+	if [ -f "$1" ] ; then
+		local filename=$(basename "$1")
+		local foldername="${filename%%.*}"
+		local fullpath=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "$1"`
+		local didfolderexist=false
+		if [ -d "$foldername" ]; then
+			didfolderexist=true
+			read -p "$foldername already exists, do you want to overwrite it? (y/n) " -n 1
+			echo
+			if [[ $REPLY =~ ^[Nn]$ ]]; then
+				return
+			fi
+		fi
+		mkdir -p "$foldername" && cd "$foldername"
+		case $1 in
+			*.tar.bz2) tar xjf "$fullpath" ;;
+			*.tar.gz) tar xzf "$fullpath" ;;
+			*.tar.xz) tar Jxvf "$fullpath" ;;
+			*.tar.Z) tar xzf "$fullpath" ;;
+			*.tar) tar xf "$fullpath" ;;
+			*.taz) tar xzf "$fullpath" ;;
+			*.tb2) tar xjf "$fullpath" ;;
+			*.tbz) tar xjf "$fullpath" ;;
+			*.tbz2) tar xjf "$fullpath" ;;
+			*.tgz) tar xzf "$fullpath" ;;
+			*.txz) tar Jxvf "$fullpath" ;;
+			*.zip) unzip "$fullpath" ;;
+			*) echo "'$1' cannot be extracted via extract()" && cd .. && ! $didfolderexist && rm -r "$foldername" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
-
 
 # Simple calculator
 function calc() {
@@ -133,6 +114,7 @@ function calc() {
     fi;
     printf "\n";
 }
+
 ## Load all directory files as source
 source_dir() {
     for f in $1/*
@@ -141,3 +123,17 @@ source_dir() {
     done
 
 }
+
+cpdate() {
+ DATE=`date +%Y%m%d`
+ echo "backup..."
+ for f in $*; do
+     echo "    $f to $f.$DATE"
+     cp $f $f.$DATE -r;
+ done
+ echo "done."
+}
+
+# gitignore
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
