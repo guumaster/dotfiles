@@ -19,7 +19,7 @@ export PATH=$PATH:$HOME/bin/
 #
 # Use a verbose prompt, Vim like 'smartcase' search, and interpret color codes
 # and escape sequences.
-export LESS='-M -i -R -F'
+export LESS='-i -R -X -F'
 
 # Display multi-byte characters.
 export LESSCHARSET=utf-8
