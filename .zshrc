@@ -11,7 +11,9 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 #POWERLEVEL9K_MODE='awesome-patched'
 # POWERLEVEL9K_MODE="nerdfont-fontconfig"
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+
 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -50,6 +52,11 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # HIST_STAMPS="mm/dd/yyyy"
 HIST_STAMPS="yyyy-mm-dd"
 SAVEHIST=100000
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+export PATH="/opt/Postman:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -97,31 +104,50 @@ source $ZSH/oh-my-zsh.sh
 setopt inc_append_history
 setopt share_history
 setopt auto_cd
+setopt appendhistory autocd extendedglob notify
 
+autoload -Uz compinit
+compinit
 #zstyle ':completion:*' menu select
+bindkey -e
+zstyle :compinstall filename '/home/guu/.zshrc'
 
-# antigen
+# Load Antigen
 source ~/antigen.zsh
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# Load various lib files
+antigen bundle robbyrussell/oh-my-zsh lib/
 
+# antigen theme bhilburn/powerlevel9k powerlevel9k
 # antigen bundle mafredri/zsh-async
 # antigen bundle marszall87/lambda-pure
+# antigen theme robbyrussell
+antigen theme jdavis/zsh-files themes/jdavis
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle autoenv
+#
+# Antigen Bundles
+#
+#antigen bundle autoenv
+antigen bundle node
+# antigen bundle npm
+antigen bundle lukechilds/zsh-better-npm-completion
+antigen bundle heroku
+antigen bundle pip
 antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle compleat
 antigen bundle git
 antigen bundle git-extras
 antigen bundle gitfast
+antigen bundle git-flow
 antigen bundle pj
 antigen bundle z
-antigen bundle debian
-antigen bundle node
+antigen bundle themes
+antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 antigen bundle npm
 antigen bundle ng
 antigen bundle tmux
+antigen bundle rupa/z
 antigen bundle tmuxinator
 antigen bundle sudo
 antigen bundle mafredri/zsh-async
@@ -134,9 +160,12 @@ antigen bundle tarruda/zsh-autosuggestions
 antigen apply
 
 # My stuff
+
+unalias cp
 source ~/dotfiles/exports.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/aliases.sh
 
 # Nice colors
 eval $( dircolors -b $HOME/.dircolors )
+eval "$(direnv hook zsh)"
