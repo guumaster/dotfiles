@@ -33,3 +33,5 @@ export PAGER=less
 # Use less for viewing man pages.
 export MANPAGER=$PAGER
 
+# Git Plus
+export PATH=$PATH:/opt/git-plus/
