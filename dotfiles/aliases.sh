@@ -71,3 +71,5 @@ alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 # TODO-txt-CLI
 alias t="todo"
+
+alias lt="$HOME/.npm-packages/bin/lt"

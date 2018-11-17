@@ -1,1 +1,5 @@
 .dotfiles.git
+.config/nvim/.backup
+.config/nvim/.tmp
+.config/nvim/undofiles
+.npm-packages
