@@ -92,13 +92,14 @@ export PATH="$HOME/bin:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PROJECT_PATHS=(~/workspace/programming/code ~/workspace/compartido ~/workspace/programming/code/libs)
+#PROJECT_PATHS=(~/workspace/programming/code ~/workspace/compartido ~/workspace/programming/code/libs)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git zsh-completions node npm tmux tmuxinator gitfast git-extras pj debian autoenv)
+plugins=(gitfast history git-extras helm kubectl)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -124,7 +125,8 @@ antigen bundle robbyrussell/oh-my-zsh lib/
 # antigen bundle mafredri/zsh-async
 # antigen bundle marszall87/lambda-pure
 # antigen theme robbyrussell
-antigen theme jdavis/zsh-files themes/jdavis
+#antigen theme jdavis/zsh-files themes/jdavis
+antigen theme refined
 
 #
 # Antigen Bundles
@@ -134,6 +136,7 @@ antigen bundle node
 # antigen bundle npm
 antigen bundle lukechilds/zsh-better-npm-completion
 antigen bundle heroku
+antigen bundle kubectl
 antigen bundle pip
 antigen bundle command-not-found
 antigen bundle common-aliases
@@ -157,6 +160,8 @@ antigen bundle zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 antigen bundle tarruda/zsh-autosuggestions
+# Get Media
+antigen bundle soimort/you-get
 
 # Tell antigen that you're done.
 antigen apply
@@ -164,6 +169,7 @@ antigen apply
 # My stuff
 
 unalias cp
+unalias rm
 source ~/dotfiles/exports.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/aliases.sh
@@ -172,3 +178,8 @@ source ~/dotfiles/aliases.sh
 eval $( dircolors -b $HOME/.dircolors )
 eval "$(direnv hook zsh)"
 function gignore() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+# Kubectl
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi

@@ -34,8 +34,10 @@ let g:deoplete#enable_at_startup = 1
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'isRuslan/vim-es6'
 Plug 'suan/vim-instant-markdown'
 Plug 'elzr/vim-json'

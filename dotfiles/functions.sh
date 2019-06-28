@@ -136,4 +136,3 @@ cpdate() {
 
 # gitignore
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-

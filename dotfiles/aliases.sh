@@ -65,6 +65,7 @@ alias tkill='tmux kill-session -t'
 #general
 alias hg='history | ag'
 alias -g gp='| ag -i '
+alias sudo='sudo '
 
 # Manage your config with git
 alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
@@ -73,3 +74,10 @@ alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias t="todo"
 
 alias lt="$HOME/.npm-packages/bin/lt"
+
+# Python3
+alias python="/usr/bin/python2"
+alias pip="/usr/bin/pip2"
+
+# docker
+alias dco="docker-compose"

@@ -16,14 +16,11 @@
   changed = green
   untracked = cyan
 [user]
-  name = guumaster
-  email = gustavoandresmarin@gmail.com
-[core]
-  excludesfile = /home/guumaster/.gitignore_global
+	name = Gustavo Marin
+	email = gustavo.marin@intelygenz.com
+  excludesfile = /home/gustavo.marin/.gitignore_global
   editor = vim
-  autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
-
+	pager = diff-so-fancy | less --tabs=2 -RFX
 [alias]
   st = status
   s = status -s -b
@@ -31,12 +28,29 @@
   br = branch
   up = rebase
   ci = commit
+  stuno = status --untracked-files=no
   unstage = reset HEAD --
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
   review = !sh -c 'post-review --guess-summary --guess-description'
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+
+
+  ### diff ###
+
+  # diff - show changes not yet staged
+  dc = diff --cached
+  # diff - show changes about to be commited
+  ds = diff --staged
+  
+  # diff - show changes but by word, not line
+  dw = diff --word-diff
+  
+  # diff deep - show changes with our preferred options. Also aliased as `diff-deep`.
+  dd = diff --check --dirstat --find-copies --find-renames --histogram --color
+
 [merge]
   tool = meld
 [push]

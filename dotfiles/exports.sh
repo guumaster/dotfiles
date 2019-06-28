@@ -33,16 +33,37 @@ export PAGER=less
 # Use less for viewing man pages.
 export MANPAGER=$PAGER
 
-export PATH=$PATH:/opt/git-plus/:/opt/bin/$HOME/bin
+export PATH=$PATH:/opt/bin:$HOME/bin
 
 # NPM
 
-NPM_PACKAGES="${HOME}/.npm-packages"
+export NPM_PACKAGES="${HOME}/.npm-packages"
 
-PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# SNAP
+export PATH=$PATH:/snap/bin
+
+# RUST / CARGO
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Golang
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GO111MODULE=on
