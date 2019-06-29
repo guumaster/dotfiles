@@ -11,7 +11,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[00;32m'
 
 export WORKSPACE=/home/workspace
-export PATH=$PATH:$HOME/bin/
+export PATH=$PATH:$HOME/bin/:$HOME/bin/k8s
 
 # Configure less.
 

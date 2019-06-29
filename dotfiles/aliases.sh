@@ -81,3 +81,10 @@ alias pip="/usr/bin/pip2"
 
 # docker
 alias dco="docker-compose"
+
+# kubectl
+alias kgt="k8s_get_token"
+alias kdp="k8s_delete_pod"
+alias kgpa="kubectl get pod --all-namespaces"
+alias kiff="sudo iptables -P FORWARD ACCEPT && echo \"All your issues are solved.\""
+

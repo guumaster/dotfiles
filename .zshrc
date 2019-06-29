@@ -173,6 +173,8 @@ unalias rm
 source ~/dotfiles/exports.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/aliases.sh
+source ~/bin/k8s/k8s_env.sh
+
 
 # Nice colors
 eval $( dircolors -b $HOME/.dircolors )

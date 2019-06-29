@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Absolute path this script 
+SCRIPTPATH=`dirname $(readlink -f $0)`
+
+source "${SCRIPTPATH}/../_functions.sh"
+
+check_required_cmd kubectl
+
+USER=${1:-"admin-user"} # Some cluster have eks-admin as user
+
+KUBE_SECRET=$(kubectl -n kube-system get secret | grep $USER | awk '{print $1}')
+ACCESS_TOKEN=`kubectl -n kube-system describe secret $KUBE_SECRET \
+    | tail -n 3 \
+    | egrep "token: (.*)" | awk '{print $2}'`
+
+K8S_DASHBOARD_URL=${K8S_DASHBOARD_URL:-http://localhost:8080}
+KUBERNETES_DASHBOARD=${K8S_DASHBOARD_URL}/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
+XCLIP_INSTALLED=$(cmd_installed xclip)
+
+echo -e "\n\nAccess K8s at ${KUBERNETES_DASHBOARD}/#!/login"
+echo -ne "\n  With this access token: "
+
+if [[ $XCLIP_INSTALLED = 1 ]]; then
+    echo $ACCESS_TOKEN | xclip # mouse clipboard
+    echo $ACCESS_TOKEN | xclip -sel clip # ctrl-c clipboard
+    echo -ne "(ALREADY COPIED TO CLIPBOARD) "
+fi
+
+echo -ne "\n\n${ACCESS_TOKEN}\n\n"
+
+read -p "Press enter to open"
+redirect_cmd xdg-open "${KUBERNETES_DASHBOARD}/#!/login" 2>&1
+

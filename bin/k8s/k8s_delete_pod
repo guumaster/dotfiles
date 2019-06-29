@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+APP_LABEL=$1
+
+if [ "$#" == "0" ]; then
+	echo "Missing pod label"
+	exit 1
+fi
+
+NS=${2:-"default"}
+
+echo "Deleting pod with label '$APP_LABEL' from namespace '$NS'"
+
+#kubectl -n $NS delete pod $POD
+kubectl -n $NS delete pod -l app=$APP_LABEL
+
