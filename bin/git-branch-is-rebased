@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+function echo_red {
+    echo -e "\e[31m$1\e[0m"
+}
+
+function echo_green {
+    echo -e "\e[32m$1\e[0m"
+}
+
+TARGET_BRANCH=${1:-master}
+BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2)
+
+if [[ "$BRANCH_NAME" == "$TARGET_BRANCH" ]]; then
+  echo_green "Current branch and target branch are the same: '$TARGET_BRANCH' "
+  exit 0
+fi
+
+TARGET_HASH=$(git show-ref --heads -s $TARGET_BRANCH)
+BRANCH_HASH=$(git merge-base $TARGET_BRANCH $BRANCH_NAME)
+
+if [[ "$TARGET_HASH" == "$BRANCH_HASH" ]]; then
+  echo_green "Branch '$BRANCH_NAME' is rebased with '$TARGET_BRANCH' "
+  exit 0
+else
+  echo_red "Branch '$BRANCH_NAME' needs to be rebased on '$TARGET_BRANCH' "
+  echo -e "\nRun:\n\tgit rebase $TARGET_BRANCH"
+  exit 1
+fi
