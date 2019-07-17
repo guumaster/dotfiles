@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script checks if the current branch is rebased with the target branch.
+# default target branch is master.
+
+# Based on this SO question: https://stackoverflow.com/questions/30177047
+
 set -e
 
 function echo_red {
@@ -10,6 +15,8 @@ function echo_green {
     echo -e "\e[32m$1\e[0m"
 }
 
+# Fetch from remote
+
 TARGET_BRANCH=${1:-master}
 BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2)
 
@@ -18,9 +25,15 @@ if [[ "$BRANCH_NAME" == "$TARGET_BRANCH" ]]; then
   exit 0
 fi
 
+echo "Fetching origin $TARGET_BRANCH"
+git fetch -q origin $TARGET_BRANCH:$TARGET_BRANCH
+
+# Latest commit on target branch
 TARGET_HASH=$(git show-ref --heads -s $TARGET_BRANCH)
+# Last commit in common between the two branches
 BRANCH_HASH=$(git merge-base $TARGET_BRANCH $BRANCH_NAME)
 
+# Check if last commit on target is the one in common
 if [[ "$TARGET_HASH" == "$BRANCH_HASH" ]]; then
   echo_green "Branch '$BRANCH_NAME' is rebased with '$TARGET_BRANCH' "
   exit 0
@@ -29,3 +42,4 @@ else
   echo -e "\nRun:\n\tgit rebase $TARGET_BRANCH"
   exit 1
 fi
+
