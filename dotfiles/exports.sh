@@ -11,7 +11,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[00;32m'
 
 export WORKSPACE=/home/workspace
-export PATH=$PATH:$HOME/bin/:$HOME/bin/k8s
+export PATH=$PATH:$HOME/bin
 
 # Configure less.
 
@@ -67,3 +67,20 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GO111MODULE=on
+
+# Basher
+# git clone https://github.com/basherpm/basher.git ~/.basher
+export PATH="$HOME/.basher/bin:$PATH"
+
+export BASHER_SHELL=zsh
+export BASHER_ROOT=/home/gustavo.marin/.basher
+export BASHER_PREFIX=/home/gustavo.marin/.basher/cellar
+export BASHER_PACKAGES_PATH=/home/gustavo.marin/.basher/cellar/packages
+export PATH="$BASHER_ROOT/cellar/bin:$PATH"
+source "$BASHER_ROOT/lib/include.zsh"
+source "$BASHER_ROOT/completions/basher.zsh"
+fpath=("$BASHER_ROOT/cellar/completions/zsh/compsys" $fpath)
+for f in $(command ls "$BASHER_ROOT/cellar/completions/zsh/compctl"); do
+  source "$BASHER_ROOT/cellar/completions/zsh/compctl/$f";
+done
+
