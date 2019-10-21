@@ -3,7 +3,7 @@
 # Absolute path this script 
 SCRIPTPATH=`dirname $(readlink -f $0)`
 
-source "${SCRIPTPATH}/../_functions.sh"
+source "${SCRIPTPATH}/_functions.sh"
 
 check_required_cmd kubectl
 

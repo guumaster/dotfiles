@@ -83,6 +83,7 @@ alias pip="/usr/bin/pip2"
 alias dco="docker-compose"
 
 # kubectl
+alias kctl="kubectl"
 alias kgt="k8s_get_token"
 alias kdp="k8s_delete_pod"
 alias kgpa="kubectl get pod --all-namespaces"

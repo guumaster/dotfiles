@@ -173,7 +173,7 @@ unalias rm
 source ~/dotfiles/exports.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/aliases.sh
-source ~/bin/k8s/k8s_env.sh
+source ~/bin/k8s_env.sh
 
 
 # Nice colors
@@ -185,3 +185,16 @@ function gignore() { curl -L -s https://www.gitignore.io/api/$@ ;}
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

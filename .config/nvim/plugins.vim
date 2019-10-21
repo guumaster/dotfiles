@@ -19,6 +19,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mileszs/ack.vim'
+Plug 'jparise/vim-graphql'
 
 " Linter
 Plug 'w0rp/ale'
@@ -43,6 +44,8 @@ Plug 'suan/vim-instant-markdown'
 Plug 'elzr/vim-json'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
+
+Plug '~/.fzf'
 
 " Colorschemes
 Plug 'tomasr/molokai'
