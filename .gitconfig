@@ -50,6 +50,7 @@
   
   # diff deep - show changes with our preferred options. Also aliased as `diff-deep`.
   dd = diff --check --dirstat --find-copies --find-renames --histogram --color
+  permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 
 [merge]
   tool = meld
@@ -62,3 +63,5 @@
 	newHighlight = green bold 22
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	quotepath = false
+	autocrlf = input

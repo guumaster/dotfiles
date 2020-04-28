@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -10,6 +17,7 @@ export ZSH=$HOME/.oh-my-zsh
 POWERLEVEL9K_MODE='awesome-fontconfig'
 #POWERLEVEL9K_MODE='awesome-patched'
 # POWERLEVEL9K_MODE="nerdfont-fontconfig"
+#ZSH_THEME=powerlevel10k/powerlevel10k
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
@@ -99,7 +107,7 @@ export PATH="$HOME/bin:$PATH"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git zsh-completions node npm tmux tmuxinator gitfast git-extras pj debian autoenv)
-plugins=(gitfast history git-extras helm kubectl)
+plugins=(gitfast history git-extras helm kubectl minikube web-search golang hostctl)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -126,7 +134,8 @@ antigen bundle robbyrussell/oh-my-zsh lib/
 # antigen bundle marszall87/lambda-pure
 # antigen theme robbyrussell
 #antigen theme jdavis/zsh-files themes/jdavis
-antigen theme refined
+#antigen theme refined
+antigen theme romkatv/powerlevel10k
 
 #
 # Antigen Bundles
@@ -136,7 +145,7 @@ antigen bundle node
 # antigen bundle npm
 antigen bundle lukechilds/zsh-better-npm-completion
 antigen bundle heroku
-antigen bundle kubectl
+#antigen bundle kubectl
 antigen bundle pip
 antigen bundle command-not-found
 antigen bundle common-aliases
@@ -181,20 +190,25 @@ eval $( dircolors -b $HOME/.dircolors )
 eval "$(direnv hook zsh)"
 function gignore() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-# Kubectl
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+[[ -f $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/gustavo.marin/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[[ -f $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.npm-packages/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+

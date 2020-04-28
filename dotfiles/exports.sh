@@ -60,7 +60,7 @@ fi
 export PATH=$PATH:/snap/bin
 
 # RUST / CARGO
-export PATH="$HOME/.cargo/bin:$PATH"
+#export PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang
 export GOROOT=/usr/local/go
@@ -68,19 +68,9 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GO111MODULE=on
 
-# Basher
-# git clone https://github.com/basherpm/basher.git ~/.basher
-export PATH="$HOME/.basher/bin:$PATH"
 
-export BASHER_SHELL=zsh
-export BASHER_ROOT=/home/gustavo.marin/.basher
-export BASHER_PREFIX=/home/gustavo.marin/.basher/cellar
-export BASHER_PACKAGES_PATH=/home/gustavo.marin/.basher/cellar/packages
-export PATH="$BASHER_ROOT/cellar/bin:$PATH"
-source "$BASHER_ROOT/lib/include.zsh"
-source "$BASHER_ROOT/completions/basher.zsh"
-fpath=("$BASHER_ROOT/cellar/completions/zsh/compsys" $fpath)
-for f in $(command ls "$BASHER_ROOT/cellar/completions/zsh/compctl"); do
-  source "$BASHER_ROOT/cellar/completions/zsh/compctl/$f";
-done
+# JetBrain
+export GOLAND_JDK=/usr/lib/jvm/java-13-openjdk-amd64
 
+# Krew for K8s
+export PATH="${PATH}:${HOME}/.krew/bin"
