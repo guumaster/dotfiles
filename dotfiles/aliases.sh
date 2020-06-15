@@ -76,8 +76,8 @@ alias t="todo"
 alias lt="$HOME/.npm-packages/bin/lt"
 
 # Python3
-alias python="/usr/bin/python2"
-alias pip="/usr/bin/pip2"
+#alias python="/usr/bin/python2"
+#alias pip="/usr/bin/pip2"
 
 # docker
 alias dco="docker-compose"

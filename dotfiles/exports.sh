@@ -74,3 +74,7 @@ export GOLAND_JDK=/usr/lib/jvm/java-13-openjdk-amd64
 
 # Krew for K8s
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+# Poetry for python deps
+export PATH="${PATH}:${HOME}/.poetry/bin"
+

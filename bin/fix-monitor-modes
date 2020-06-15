@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCREEN_NAME=DP-1-3
+MODE_NAME="2560x1080_60.00"
+
+# list monitors:
+#
+# xrandr --listactivemonitors
+# output:
+# 1: +*DP-1-3 2560/677x1080/286+0+0  DP-1-3
+#      ^--- SCREEN_NAME
+
+#generate mode:
+#
+# gtf 2560 1080 60
+# output:
+# Modeline "2560x1080_60.00"  230.76  2560 2728 3000 3440  1080 1081 1084 1118  -HSync +Vsync
+#           ^-- MODE_NAME
+
+xrandr --newmode $MODE_NAME 230.76  2560 2728 3000 3440  1080 1081 1084 1118  -HSync +Vsync
+xrandr --addmode $SCREEN_NAME $MODE_NAME
+xrandr --output $SCREEN_NAME --mode $MODE_NAME
+

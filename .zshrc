@@ -191,6 +191,9 @@ eval "$(direnv hook zsh)"
 function gignore() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # tabtab source for serverless package
