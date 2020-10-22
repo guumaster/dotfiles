@@ -1,6 +1,8 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-sensible'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -104,6 +106,8 @@ let g:vim_json_syntax_conceal = 0
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+let g:shfmt_extra_args = '-i 2'
 
 " Or if you have Neovim >= 0.1.5
 if (has("termguicolors"))

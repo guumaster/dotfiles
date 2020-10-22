@@ -1,5 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/gustavo.marin/.local/share/virtualenvs/techcouncil-site-rrswJb3s'
-let g:netrw_dirhist_2='/home/gustavo.marin/.local/share/virtualenvs/techcouncil-site-rrswJb3s/lib'
-let g:netrw_dirhist_3='/home/gustavo.marin/.local/share/virtualenvs/techcouncil-site-rrswJb3s/lib/python2.7'
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/workspace/playground/github.com/roleando/botserver/src/discord'
+let g:netrw_dirhist_1='/workspace/konstellation/kre-cd/.git'

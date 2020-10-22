@@ -13,6 +13,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
 
+# disk usage for disk only
+alias dfh='df -h | grep -v "/snap" | grep -v tmpfs | grep -v udev'
+
 # show hidden files only
 alias l.='ls -d .* --color=auto -alFh'
 
