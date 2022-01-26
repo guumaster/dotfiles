@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/workspace/playground/golang/talentz/assets'
+let g:netrw_dirhist_4='/workspace/playground/golang/talentz/assets/recruiter_questions'
+let g:netrw_dirhist_3='/workspace/playground/golang/talentz/assets'
 let g:netrw_dirhist_2='/workspace/playground/github.com/roleando/botserver/src/discord'
 let g:netrw_dirhist_1='/workspace/konstellation/kre-cd/.git'
