@@ -3,3 +3,28 @@
 .config/nvim/.tmp
 .config/nvim/undofiles
 .npm-packages
+
+
+# Mac stuff
+.DS_Store
+.antigen/
+.cache/
+.fzf.zsh
+.histfile
+.local/
+.oh-my-zsh/
+.ssh/
+.viminfo
+.zcompdump*
+.zsh*
+Applications/
+Desktop/
+Documents/
+Downloads/
+Google Drive
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+

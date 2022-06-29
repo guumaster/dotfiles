@@ -17,7 +17,7 @@
   untracked = cyan
 [user]
 	name = Gustavo Marin
-	email = gustavo.marin@intelygenz.com
+	email = gustavo.marin@toughtworks.com
   excludesfile = /home/gustavo.marin/.gitignore_global
   editor = vim
 	pager = diff-so-fancy | less --tabs=2 -RFX
@@ -65,3 +65,7 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	quotepath = false
 	autocrlf = input
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[init]
+	defaultBranch = main

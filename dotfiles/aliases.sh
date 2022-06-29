@@ -19,6 +19,8 @@ alias dfh='df -h | grep -v "/snap" | grep -v tmpfs | grep -v udev'
 # show hidden files only
 alias l.='ls -d .* --color=auto -alFh'
 
+alias diff='f(){ diff -u "$@" | diff-so-fancy;  unset -f f; }; f'
+
 # mv, rm, cp
 # alias mv='mv -v'
 # alias rm='rm -i -v'
@@ -51,7 +53,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Sys info
-alias cpu='cat /proc/cpuinfo'
+#alias cpu='cat /proc/cpuinfo'
 alias mem='cat /proc/meminfo'
 alias topmem='ps -o time,ppid,pid,nice,pcpu,pmem,user,comm -A | sort -n -k 6 | tail -15'
 
